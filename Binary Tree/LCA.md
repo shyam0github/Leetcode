@@ -20,12 +20,14 @@ class Solution {
 }
 
 ```
+## Illustration of how root return null and node  :
 
+![Lowest Common Ancestor Illustration](LCAimage.png)
 
-![[Pasted image 20251229160231.png]]
 #### Traverse in PostOrder Traversal (left, Right, Root)
 ### Base
 if current node is 
+
 ```
 node == p or node == q 
 return node
@@ -38,5 +40,18 @@ and if <span style="color:rgb(255, 255, 0)">both side</span> return <span style=
 ##### cond 2
 else
 if <span style="color:rgb(255, 255, 0)">both side</span> returning node then return <span style="color:rgb(255, 255, 0)">current node</span> 
+
+## Complexity Analysis
+
+Time Complexity:
+Each node is visited once → $O(n)$
+
+Space Complexity:
+Recursive stack depth → $O(h)$
+where $h$ is the height of the tree
+
+Worst case (skewed tree): $O(n)$
+
+Best case (balanced tree): $O(\log n)$
 
 ---
