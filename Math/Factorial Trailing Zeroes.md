@@ -85,17 +85,7 @@ $$
 
 ## 🧮 Final Formula (Core Equation)
 
-The number of trailing zeros is:
-
-$$  
-\left\lfloor \frac{n}{5} \right\rfloor  
-+  
-\left\lfloor \frac{n}{25} \right\rfloor  
-+  
-\left\lfloor \frac{n}{125} \right\rfloor
-
-- \cdots  
-    $$
+![[Pasted image 20260101133829.png]]
 
 We stop when:
 
@@ -109,17 +99,16 @@ $$
 
 ```java
 class Solution {
-    public int trailingZeroes(int n) {
+    public int trailingZeroes(int n) {
+        int count = 0;
 
-        int count = 0;
+        // Initialize i with 5 and then keep dividing number with i until i <= n and increase count to quotient..
 
-        while (n > 0) {
-            n /= 5;
-            count += n;
-        }
-
-        return count;
-    }
+        for(int i = 5; i <= n; i = i * 5){
+        count = count + n / i;
+        }
+        return count;
+    }
 }
 ```
 
