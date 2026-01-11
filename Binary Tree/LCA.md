@@ -22,7 +22,7 @@ class Solution {
 ```
 ## Illustration of how root return null and node  :
 
-![Lowest Common Ancestor Illustration](LCAimage.png)
+![Lowest Common Ancestor Illustration](../Image\LCAimage.png)
 
 #### Traverse in PostOrder Traversal (left, Right, Root)
 ### Base
