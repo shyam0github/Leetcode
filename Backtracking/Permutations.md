@@ -1,3 +1,52 @@
+## Naive Approach of Backtracking
+
+```java
+
+// Naive Approach with Backtracking
+
+class Solution {
+
+    public List<List<Integer>> permute(int[] nums) {
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        List<Integer> ds = new ArrayList<>();
+
+        boolean[] freq = new boolean[nums.length];
+
+          allPermutation(nums, res, ds, freq);
+
+          return res;
+
+    }
+
+    public void allPermutation(int[] nums, List<List<Integer>> res, List<Integer> ds, boolean[] freq) {
+
+        if(ds.size() == nums.length){
+        res.add(new ArrayList<>(ds));
+        return;
+        }
+        
+        for(int i = 0; i < nums.length; i++){
+        
+            if(!freq[i]){
+                ds.add(nums[i]);
+                freq[i] = true;
+
+                allPermutation(nums, res, ds, freq);
+                
+                ds.remove(ds.size() - 1); // delete that element
+                freq[i] = false;
+            }
+        }
+}
+
+}
+```
+
+
+## Optimal Approach with Swap: 
+This is the **most expected interview solution**.
 
 
 ```java
@@ -14,8 +63,11 @@ class Solution {
 
         // Base case: one permutation completed
         if (index == nums.length) {
+        
             List<Integer> temp = new ArrayList<>();
-            for (int num : nums) temp.add(num);
+            
+            for (int num : nums) 
+            temp.add(num); //### Add modified array which as at the end permute got 
             result.add(temp);
             return;
         }
@@ -24,7 +76,7 @@ class Solution {
         for (int i = index; i < nums.length; i++) {
             swap(nums, index, i);
             backtrack(nums, index + 1, result);
-            swap(nums, index, i); // backtrack
+            swap(nums, index, i); // backtrack to previous array
         }
     }
 
@@ -37,6 +89,8 @@ class Solution {
 
 ```
 
-## ⭐ Optimal Approach: Backtracking (Swap Method)
+### Visualize 
 
-This is the **most expected interview solution**.
+![Visulaization](../Image\Pasted-image-20260109194511.png)
+
+---
